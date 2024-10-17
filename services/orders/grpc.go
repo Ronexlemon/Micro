@@ -1,6 +1,8 @@
 package orders
 
 import (
+	handler "gomicro/services/orders/handler/order"
+	"gomicro/services/orders/service"
 	"log"
 	"net"
 
@@ -22,6 +24,8 @@ func (s *gRPCServer) Run() error{
 		log.Fatal("Failed to listen",err)
 	}
 	grpcServer := grpc.NewServer()
+	orderService := service.NewOrderService()
+    handler.NewGrpcOrdersService(grpcServer,orderService)
 
 	return grpcServer.Serve(lis)
 }
