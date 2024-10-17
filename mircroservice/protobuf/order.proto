@@ -1,0 +1,15 @@
+syntax = "proto3";
+package microservice;
+option go_package = "gomicro";
+message CreateOrderRequest{
+
+}
+message CreateOrderResponse{
+    
+}
+
+
+service Orderservice{
+    rpc CreateOder(CreateOrderRequest) returns (CreateOrderResponse);
+}
+
